@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../includes/head', {title: 'CraveLab'}) %>
+
+<body>
+  <header>
+    <h1>CraveLab</h1>
+
+    <nav>
+      <a href="/">Home</a>&nbsp;|&nbsp;
+      <a href="/about">About</a>&nbsp;|&nbsp;
+      <a href="/cookies">Shop</a>&nbsp;|&nbsp;
+      <a href="/contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <p>Our current offering:</p>
+    <ul>
+        <% cookies.forEach(cookie => { %>
+            <l1><%= cookies %></l1>
+        <% }) %>
+    </ul>   
+        <li>Chocolate Chip</li>
+    <li>Banana</li>
+      <li><a href="/craving/chocolate-chip">Chocolate Chip</a></li>
+      <li><a href="/craving/cherry">Cherry</a></li>
+    
+  </main>
+
+  <footer>
+    Made with sweet🍪 by Craving
+  </footer>
+</body>
+</html>
