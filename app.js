@@ -1,8 +1,13 @@
 
 const mongoose = require('mongoose')
 
+mongoose.connect('mongodb://127.0.0.1:27017/CraveLab')
+.then(() => console.log('💽 Database connected'))
+  .catch(error => console.error(error))
+
 const express = require("express");
 const app = express();
+app.use(express.static('public'))
 
 app.set('view engine', 'ejs')
 
@@ -12,6 +17,11 @@ const cookies = [
   "Chocolate Chip",
   "Banana"
 ]
+
+const readablePrice = (price) => {
+  return `$${price.toFixed(2)}`
+}
+
 
 app.listen(PORT, () => {
   console.log(`👋 Started server on port ${PORT}`)

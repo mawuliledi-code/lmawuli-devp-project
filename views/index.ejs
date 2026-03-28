@@ -1,30 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<%- include('includes/head', {title: 'Home | cravings'}) %>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CraveLab</title>
+  <%- include('includes/head', {title: 'Home | CraveLab'}) %>
+  <link rel="stylesheet" href="/styles/main.css">
 </head>
 <body>
-  <header>
-    <h1>CraveLab</h1>
 
-    <nav>
-      <a href="/">Home</a>&nbsp;|&nbsp;
-      <a href="/about">About</a>&nbsp;|&nbsp;
-      <a href="/cookies">Shop</a>&nbsp;|&nbsp;
-      <a href="/contact">Contact</a>
-    </nav>
-  </header>
 
   <main>
-    <p>Welcome to CraveLab. </p>
-    <p>We currently have 7 Bite me Cookies in stock.</p>
+
+    <nav>
+      <a href="/">SHOP</a>&nbsp;|&nbsp;
+      <a href="/blog">BLOG</a>&nbsp;|&nbsp;
+      <a href="/discover">DISCOVER</a>&nbsp;|&nbsp;
+      <a href="/contact">CONTACT</a>
+    </nav>
+
+    <section class="hero">
+      <div class="hero-content">
+        <h2>Welcome to CraveLab 🍪</h2>
+        <p>Where cravings turn into creations. Freshly baked, made with love.</p>
+        <a href="/cookies" class="btn">Discover Our Cookies</a>
+      </div>
+    </section>
+
+     <div class="cookie-card">
+
+          <h3>Double Chocolate 🍫</h3>
+          <p>Rich Ghana cocoa dough loaded with dark chocolate chips.</p>
+          <span class="price">$2.99</span>
+          <a href="/cookies" class="btn">Order Now</a>
+        </div>
+
+        <div class="cookie-card">
+          <h3>Peanut Butter 🥜</h3>
+          <p>Creamy peanut butter baked into every soft bite.</p>
+          <span class="price">$2.49</span>
+          <a href="/cookies" class="btn">Order Now</a>
+        </div>
+
+        <div class="cookie-card">
+          
+          <h3>Classic Chocolate Chip 🍪</h3>
+          <p>The timeless favourite — crispy edges, chewy centre.</p>
+          <span class="price">$1.99</span>
+          <a href="/cookies" class="btn">Order Now</a>
+        </div>
+
+    
+    <section class="features">
+      <div class="feature-card">
+    
+        <h3>Freshly Baked</h3>
+        <p>Made daily with the finest and fresh ingredients.</p>
+      </div>
+
+      <div class="feature-card">
+        <h3>Fast Delivery</h3>
+        <p>We do door delivery of your Favorites tasty flavour 🍪 .</p>
+      </div>
+
+      <div class="feature-card">
+        <h3>Made with Love</h3>
+        <p>Every bite crafted with passion and care.</p>
+      </div>
+    </section>
   </main>
 
-  <footer>
-    Made with sweet 🍪 by Cravings
-  </footer>
+ 
 </body>
 </html>
