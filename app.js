@@ -91,7 +91,6 @@ app.get('/cookies', async (request, response) => {
 })
 
 
-
 app.get('/cookies/new', (request, response) => {
   response.render('cookies/new');
 });
@@ -120,6 +119,61 @@ app.get('/cookies/:slug', async (request, response) => {
     response.status(404).send('Could not find the cookie you\'re looking for.')
   }
 })
+
+app.get('/cookies/:slug/edit', async(request, response) => { 
+  try { 
+    const slug = request.params.slug
+    const cookie = await Cookie.findOne({ slug: slug}).exec()
+    if(!cookies) throw new Error('Cookie not found')
+
+    response.render('cookies/edit', { cookies: cookie})
+  }catch(error) {
+    console.error(error)
+    response.status(404).send('Could not find the cookie you\'re looking for.')
+  } 
+})
+
+app.post('/cookies/:slug', async (request, response) => {
+  try {
+    const cookie = await Cookie.findOneAndUpdate(
+     { slug: request.params.slug },
+     request.body 
+    )
+
+  }catch (error) {
+    console.error(error)
+    response.send('Error: The cookie could not be update.')
+  }
+})
+
+
+app.post('/cookies/:slug', async (request, response) => {
+  try {
+    const cookie = await Cookie.findOneAndUpdate(
+      { slug: request.params.slug }, 
+      request.body,
+      { new: true }
+    )
+    
+    response.redirect(`/cookies/${cookie.slug}`)
+  }catch (error) {
+    console.error(error)
+    response.send('Error: The cookie could not be created this time.')
+  }
+})
+
+app.get('/cookies/:slug/delete', async (request, response) => {
+  try {
+    await Cookies.findOneAndDelete({ slug: request.params.slug})
+
+    response.redirect('/cookies')
+  }catch (error) {
+    console.error(error)
+    response.send('Error: No cookies was deleted. ')
+  }
+})
+
+
 
 app.listen(PORT, () => {
   console.log(`👋 Started server on port ${PORT}`);
