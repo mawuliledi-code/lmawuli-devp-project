@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('../includes/head', {title: 'New Cookie | CraveLab'}) %>
+  <link rel="stylesheet" href="/styles/main.css">
+</head>
+
+<body>
+
+  
+  <header>
+    <h1>CraveLab 🍪</h1>
+    <nav>
+      <a href="/">SHOP</a>
+      <a href="/blog">BLOG</a>
+      <a href="/discover">DISCOVER</a>
+      <a href="/contact">CONTACT</a>
+    </nav>
+  </header>
+
+  <main>
+
+
+    <section class="form-container">
+      <h2>🍪 Create a New Cookie</h2>
+      <p class="form-subtitle">Add a new cookie to the CraveLab menu</p>
+
+      <form action="/cookies" method="POST">
+
+        <div class="input-group">
+          <label for="name">Cookie Name</label>
+          <input type="text" id="name" name="name" placeholder=" Classic Chocolate Chip" required />
+        </div>
+
+        <div class="input-group">
+          <label for="slug">Peanut</label>
+          <input type="text" id="slug" name="peanut" placeholder=" classic-chocolate-chip" required />
+        </div>
+        
+        <div class="input-group">
+          <label for="priceInCents">Price (in cents)</label>
+          <input type="number" id="priceInCents" name="priceInCents" placeholder=" 0.99" required min="0" step="1" />
+        </div>
+
+        <button type="submit">Save Cookie 🍪</button>
+
+
+      </form>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Made with sweet 🍪 by <strong>CraveLab</strong> &copy; <%= new Date().getFullYear() %></p>
+  </footer>
+
+</body>
+</html>
