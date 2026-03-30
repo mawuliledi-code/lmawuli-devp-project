@@ -1,51 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <%- include('../includes/head', {title: 'New Cookie | CraveLab'}) %>
+  <%- include('../includes/head', { title: 'New Cookie | CraveLab' }) %>
   <link rel="stylesheet" href="/styles/main.css">
 </head>
 
 <body>
 
-  <header>
-    <h1>CraveLab 🍪</h1>
-    <nav>
-      <a href="/">SHOP</a>
-      <a href="/blog">BLOG</a>
-      <a href="/discover">DISCOVER</a>
-      <a href="/contact">CONTACT</a>
-    </nav>
+  <header class="site-header">
+    <div class="container">
+      <h1 class="logo">
+        <a href="/">CraveLab <span aria-hidden="true">🍪</span></a>
+      </h1>
+
+      <nav class="main-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="/" class="active">Shop</a></li>
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="/discover">Discover</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
-   <div class="form-right">
-        <h2>New Cookie Details</h2>
-        <p class="form-desc">Fill in the form below to add your cookie to the menu</p>
 
+  <section class="hero-banner">
+    <div class="container">
+      <h2>Create a New CraveLab Cookie 🍪</h2>
+      <p>Design your favorite flavor and add it to the CraveLab collection.</p>
+    </div>
+  </section>
 
-      <div class="hero-banner">
-    <h2>🍪 Create a New CraveLab Cookie</h2>
-    <p>Design your favourite flavour and add it to the CraveLab collection</p>
-  </div>
-  <main>
+  <main class="container">
 
     <section class="form-wrapper">
 
-      <div class="form-left">
+
+      <aside class="form-left">
         <span class="form-emoji">🍪</span>
-        <h2>Design Your New CraveLab</h2>
-        <p>Fill in the details and get ready to Enjoy!</p>
+        <h3>Design Your Cookie</h3>
+        <p>Fill in and bring your creation to life!</p>
+
         <ul class="form-tips">
-          <li> Use a catchy cookie name</li>
-          <li>Pick a unique CraveLab type</li>
-          <li>Hit the button and make it happen!</li>
+          <li>Use a catchy cookie name</li>
+          <li>Pick a unique flavor and taste</li>
+          <li>Happy about your design!</li>
         </ul>
-      </div>
+      </aside>
 
       <div class="form-right">
+        <h2>New Cookie Details</h2>
+        <p class="form-desc">
+          Fill in the form below to add your style to the menu.
+        </p>
+
         <form action="/cookies" method="POST">
 
           <div class="input-group">
-            <label for="name">🍪 Cookie Name</label>
+            <label for="name">Cookie Name</label>
             <input 
               type="text" 
               id="name" 
@@ -56,12 +69,12 @@
           </div>
 
           <div class="input-group">
-            <label for="design">🍪 Design</label>
+            <label for="design">Description</label>
             <input 
               type="text" 
-              id="slug" 
-              name="peanut" 
-              placeholder="e.g. New Cookies Just Dropped!" 
+              id="design" 
+              name="design" 
+              placeholder="e.g. A rich chocolate cookie with peanut crunch" 
               required 
             />
           </div>
@@ -76,8 +89,10 @@
             />
           </div>
 
-          <button type="submit">MAKE THIS HAPPEN!</button>
-          <a href="/news" class="back-link">← Back to Design</a>
+          <div class="form-actions">
+            <button type="submit">Happy To Go!</button>
+            <a href="/cookies" class="back-link">← Back to Cookies</a>
+          </div>
 
         </form>
       </div>
@@ -86,8 +101,11 @@
 
   </main>
 
-  <footer>
-    <p>Made with sweet 🍪 by <strong>CraveLab</strong> &copy; <%= new Date().getFullYear() %></p>
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <p>
+      Made with 🍪 by <strong>CraveLab</strong> &copy; <%= new Date().getFullYear() %>
+    </p>
   </footer>
 
 </body>
