@@ -1,17 +1,17 @@
 
 const express = require('express');
 const mongoose = require('mongoose');
-const path = require('path');  // ← moved to top
+const path = require('path');  
 
 const app = express();
 const PORT = 3000;
 
-// ── DATABASE ──────────────────────────────────────────
+
 mongoose.connect('mongodb://127.0.0.1:27017/StackLab')
   .then(() => console.log('💽 Database connected'))
   .catch(error => console.error(error));
 
-// ── SCHEMA ────────────────────────────────────────────
+
 const burgerSchema = new mongoose.Schema({
   slug:         String,
   name:         String,
@@ -28,15 +28,15 @@ const burgerSchema = new mongoose.Schema({
 
 const Burger = mongoose.model('Burger', burgerSchema);
 
-// ── HELPER ────────────────────────────────────────────
+
 const readablePrice = (price) => `$${(price / 100).toFixed(2)}`;
 
-// ── MIDDLEWARE ────────────────────────────────────────
-app.use(express.static(path.join(__dirname, 'public')));  // ← only once
+
+app.use(express.static(path.join(__dirname, 'public')));  
 app.use(express.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 
-// ── ROUTES ────────────────────────────────────────────
+
 app.get('/', async (req, res) => {
   try {
     const burgers = await Burger.find({}).exec();
@@ -141,7 +141,7 @@ app.get('/burgers/:slug/delete', async (req, res) => {
   }
 });
 
-// ── START ─────────────────────────────────────────────
+
 app.listen(PORT, () => {
   console.log(`👋 Started StackLab server on port ${PORT}`);
 });
