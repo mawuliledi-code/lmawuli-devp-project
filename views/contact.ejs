@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./includes/head', { title: 'Contact | StackLab' }) %>
+
+<link rel="stylesheet" href="/styles/main.css">
+
+<body>
+
+  <nav>
+    <a href="/" class="nav-active">SHOP</a>
+    <a href="/burgers/new">CREATE YOUR BURGER</a>
+    <a href="/discover">DISCOVER</a>
+    <a href="/contact">CONTACT</a>
+    <img 
+        src="/images/stacklab-logo.png" 
+        alt="StackLab Logo"
+        style="width:100px; height:80px; object-fit:contain; margin-left:auto;"
+      />
+  </nav>
+
+
+  <section class="hero-banner">
+    <h2>Get In Touch 📬</h2>
+    <p>Come visit, call, or message us — we are always happy to hear from you!</p>
+  </section>
+
+  
+  <main class="container" style="margin-top:50px; margin-bottom:60px;">
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:40px;">
+
+
+      <div>
+        <h2 class="section-title">Our Details</h2>
+
+        <div class="contact-card">
+          <span class="contact-icon">📍</span>
+          <div>
+            <h4>Location</h4>
+            <p>44 Peace Street, Code City</p>
+            <p>Neukolln,Berlin</p>
+            
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <span class="contact-icon">📞</span>
+          <div>
+            <h4>Phone</h4>
+            <p>+49 436 7678 986</p>
+            <p>Mon -- Fri, 9am -- 9pm</p>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <span class="contact-icon"></span>
+          <div>
+            <h4>Email</h4>
+            <p>Iamheretostay.com</p>
+            <p>We reply within 12 hours</p>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <span class="contact-icon"></span>
+          <div>
+            <h4>Opening Hours</h4>
+            <p>Mon -- Fri: 9am -- 10pm</p>
+            <p>Sat -- Sun: 10am -- 9pm</p>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <span class="contact-icon"></span>
+          
+        </div>
+
+      </div>
+
+
+      <div>
+        <h2 class="section-title">Send a Message</h2>
+
+        <form action="/contact" method="POST">
+
+          <div class="input-group">
+            <label for="name">Your Name</label>
+            <input 
+              type="text" 
+              id="name" 
+              name="name" 
+              placeholder="e.g. Holified" 
+              required />
+          </div>
+
+          <div class="input-group">
+            <label for="email">Email Address</label>
+            <input 
+              type="email" 
+              id="email" 
+              name="email" 
+              placeholder="e.g. Iamheretostay@email.com" 
+              required />
+          </div>
+
+          <div class="input-group">
+            <label for="subject">Subject</label>
+            <input 
+              type="text" 
+              id="subject" 
+              name="subject" 
+              placeholder="e.g. Burger Order Inquiry" 
+              required />
+          </div>
+
+          <div class="input-group">
+            <label for="message">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              rows="5"
+              placeholder="Write your message here..."
+              required></textarea>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit">Send Message 📬</button>
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+  </main>
+
+  
+  <footer class="site-footer"> 
+   
+      
+    <p>Made with Love ❤️ by <strong>StackLab</strong> &copy; <%= new Date().getFullYear() %></p>
+  </footer> 
+
+</body>
+</html>

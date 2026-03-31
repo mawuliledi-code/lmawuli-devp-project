@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../includes/head', { title: "Edit Burger | StackLab" }) %>
+
+<link rel="stylesheet" href="/styles/main.css">
+
+<body>
+
+  <nav>
+    <img 
+      src="/images/stacklab-logo.png" 
+      alt="StackLab Logo"
+    />
+    <a href="/" class="nav-active">SHOP</a>
+    <a href="/burgers/new">CREATE YOUR BURGER</a>
+    <a href="/discover">DISCOVER</a>
+    <a href="/contact">CONTACT</a>
+  </nav>
+
+  <section class="hero-banner">
+    <h2>Edit Your Burger 🍔</h2>
+    <p>Update your burger details below.</p>
+  </section>
+
+  <main class="container">
+    <div class="form-wrapper">
+
+      <aside class="form-left">
+        <span class="form-emoji">🍔✏️</span>
+        <h3>Update Your Burger</h3>
+        <p>Change any details and save your updates!</p>
+        <ul class="form-tips">
+          <li>Keep the slug unique</li>
+          <li>Update the price if needed</li>
+          <li>Make it even more delicious!</li>
+        </ul>
+      </aside>
+
+      <div class="form-right">
+        <h2>Edit Burger Details</h2>
+        <p class="form-desc">Update the form below to edit your burger.</p>
+
+        <form action="/burgers/<%= burger.slug %>" method="POST">
+
+          <div class="input-group">
+            <label for="name">Created Burger Name</label>
+            <input type="text" id="name" 
+            value="<%= burger.name %>" 
+            name="name" 
+            placeholder="Burger Name" 
+            required />
+          </div>
+
+          <div class="input-group">
+            <label for="slug">Slug</label>
+            <input type="text" 
+            id="slug" 
+            value="<%= burger.slug %>"
+             name="slug" 
+             placeholder="e.g. unique-stack"
+             required />
+          </div>
+
+          <div class="input-group">
+            <label for="patty">Patty</label>
+            <select name="patty" id="patty">
+              <option <%= burger.patty === 'Beef' ? 'selected' : '' %>>Beef</option>
+              <option <%= burger.patty === 'Chicken' ? 'selected' : '' %>>Chicken</option>
+              <option <%= burger.patty === 'Vegan' ? 'selected' : '' %>>Vegan</option>
+              <option <%= burger.patty === 'Fish' ? 'selected' : '' %>>Fish</option>
+            </select>
+          </div>
+
+          <div class="input-group">
+            <label for="toppings">Toppings</label>
+            <input type="text" 
+            id="toppings" 
+            name="toppings" 
+            value="<%= burger.toppings ? burger.toppings.join(', ') : '' %>"
+             placeholder="e.g. cheese, bacon, onions" />
+          </div>
+
+
+
+          <div class="input-group">
+            <label for="design">Description</label>
+            <input type="text" 
+            id="design" 
+            value="<%= burger.design %>" 
+            name="design" 
+            placeholder="e.g. Juicy beef burger with cheese" />
+          </div>
+
+          <div class="input-group">
+            <label for="date">Date</label>
+            <input type="date" 
+            id="date" 
+            value="<%= burger.date ? burger.date.toISOString().split('T')[0] : '' %>" 
+            name="date" />
+          </div>
+
+          <div class="input-group">
+            <label for="priceInCents">Price in Cents</label>
+            <input type="number" 
+            id="priceInCents" 
+            value="<%= burger.priceInCents %>" 
+            name="priceInCents" 
+            placeholder="Price in cents" 
+            required />
+          </div>
+
+          <div class="form-actions">
+            <button type="submit">Save Changes</button>
+            <a href="/burgers/<%= burger.slug %>" class="back-link">← Cancel</a>
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>Made with Love ❤️ by <strong>StackLab</strong> &copy; <%= new Date().getFullYear() %></p>
+  </footer>
+
+</body>
+</html>

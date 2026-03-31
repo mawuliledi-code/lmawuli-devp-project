@@ -1,180 +1,147 @@
 
 const express = require('express');
 const mongoose = require('mongoose');
+const path = require('path');  // ← moved to top
 
 const app = express();
 const PORT = 3000;
 
-// Database connection
-mongoose.connect('mongodb://127.0.0.1:27017/CraveLab')
+// ── DATABASE ──────────────────────────────────────────
+mongoose.connect('mongodb://127.0.0.1:27017/StackLab')
   .then(() => console.log('💽 Database connected'))
   .catch(error => console.error(error));
 
-
-// Schema and model
-const cookieSchema = new mongoose.Schema({
-  slug: String,
-  name: String,
-  priceInCents: Number
+// ── SCHEMA ────────────────────────────────────────────
+const burgerSchema = new mongoose.Schema({
+  slug:         String,
+  name:         String,
+  design:       String,
+  patty:        String,
+  toppings:     [String],
+  sauce:        String,
+  priceInCents: Number,
+  createdAt: {
+    type:    Date,
+    default: Date.now
+  }
 });
 
-const Cookie = mongoose.model('Cookie', cookieSchema);
+const Burger = mongoose.model('Burger', burgerSchema);
 
-app.use(express.static('public'));
+// ── HELPER ────────────────────────────────────────────
+const readablePrice = (price) => `$${(price / 100).toFixed(2)}`;
+
+// ── MIDDLEWARE ────────────────────────────────────────
+app.use(express.static(path.join(__dirname, 'public')));  // ← only once
 app.use(express.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 
-const cookies = [
-  "Chocolate Chip",
-  "Banana"
-];
-
-const readablePrice = (price) => {
-  return `$${price.toFixed(2)}`;
-};
-
-
-app.get('/', (request, response) => {
-  const numberOfCravingInStock = 40;
-  response.render('index', {
-    nameOfThePage: "CraveLab",
-    numberOfCravingInStock: numberOfCravingInStock,
-    numberOfCravingSold: 3283
-  });
-});
-
-app.get('/craving', (request, response) => {
-  response.render('cravings/index', { cookies: cookies });
-});
-
-app.get('/cookies', (request, response) => {
-  const slug = request.params.slug
-  const cookie ={}
-
-  response.render('cookies/index', {
-    cookies: cookies,
-    readablePrice: readablePrice
-  });
-});
-
-app.post('/cookies', async (request, response) => {
+// ── ROUTES ────────────────────────────────────────────
+app.get('/', async (req, res) => {
   try {
-  const newCookie = new Cookie({
-    slug: 'classic-chocolate-chip',
-    name: 'Classic Chocolate chip',
-    priceInCent: 200
-  });
-
-  await newCookie.save();
-    response.send('Cookie Created ');
+    const burgers = await Burger.find({}).exec();
+    res.render('cravings/index', {
+      nameOfThePage:   'StackLab 🍔',
+      numberOfBurgers: burgers.length,
+      numberSold:      3283,
+      burgers,
+      readablePrice
+    });
   } catch (error) {
     console.error(error);
-    response.send('Error: The cookie could not be created ');
+    res.render('cravings/index', {
+      nameOfThePage:   'StackLab 🍔',
+      numberOfBurgers: 0,
+      numberSold:      3283,
+      burgers:         [],
+      readablePrice
+    });
   }
 });
 
-app.get('/cookies', async (request, response) => {
-  try {
-    const cookies = await Cookie.find({}).exec()
-
-    response.render('cookies/index', { 
-      cookies: cookies,
-      readablePrice: readablePrice
-    })
-  }catch(error) {
-    console.error(error)
-    response.render('cookies/index', { 
-      cookies: [],
-      readablePrice: readablePrice
-    })
-  }
-})
-
-
-app.get('/cookies/new', (request, response) => {
-  response.render('cookies/new');
+app.get('/contact', (req, res) => {
+  res.render('contact');
 });
 
-app.get('/cookies', async (request, response) => {
-  const cookies = await Cookies.find({}).exec()
-
-  response.render('cookies/index', {
-    cookies: cookies,
-    readablePrice: readablePrice
-  })
-})
-
-app.get('/cookies/:slug', async (request, response) => {
+app.get('/burgers', async (req, res) => {
   try {
-    const slug = request.params.slug
-    const cookie = await Cookie.findOne({ slug: slug }).exec()
-    if(!cookie) throw new Error('Cookie not found')
-
-    response.render('cookies/show', { 
-      cookie: cookie,
-      readablePrice: readablePrice
-    })
-  }catch(error) {
-    console.error(error)
-    response.status(404).send('Could not find the cookie you\'re looking for.')
+    const burgers = await Burger.find({}).exec();
+    res.render('burgers/index', { burgers, readablePrice });
+  } catch (error) {
+    console.error(error);
+    res.render('burgers/index', { burgers: [], readablePrice });
   }
-})
+});
 
-app.get('/cookies/:slug/edit', async(request, response) => { 
-  try { 
-    const slug = request.params.slug
-    const cookie = await Cookie.findOne({ slug: slug}).exec()
-    if(!cookies) throw new Error('Cookie not found')
+app.get('/burgers/new', (req, res) => {
+  res.render('burgers/new');
+});
 
-    response.render('cookies/edit', { cookies: cookie})
-  }catch(error) {
-    console.error(error)
-    response.status(404).send('Could not find the cookie you\'re looking for.')
-  } 
-})
-
-app.post('/cookies/:slug', async (request, response) => {
+app.post('/burgers', async (req, res) => {
   try {
-    const cookie = await Cookie.findOneAndUpdate(
-     { slug: request.params.slug },
-     request.body 
-    )
-
-  }catch (error) {
-    console.error(error)
-    response.send('Error: The cookie could not be update.')
+    const newBurger = new Burger({
+      name:         req.body.name,
+      slug:         req.body.slug,
+      patty:        req.body.patty,
+      toppings:     req.body.toppings || [],
+      sauce:        req.body.sauce,
+      priceInCents: req.body.priceInCents
+    });
+    await newBurger.save();
+    res.redirect('/burgers');
+  } catch (error) {
+    console.error(error);
+    res.send('Error: Burger could not be created.');
   }
-})
+});
 
-
-app.post('/cookies/:slug', async (request, response) => {
+app.get('/burgers/:slug', async (req, res) => {
   try {
-    const cookie = await Cookie.findOneAndUpdate(
-      { slug: request.params.slug }, 
-      request.body,
+    const burger = await Burger.findOne({ slug: req.params.slug });
+    if (!burger) throw new Error('Burger not found');
+    res.render('burgers/show', { burger, readablePrice });
+  } catch (error) {
+    console.error(error);
+    res.status(404).send('Burger not found.');
+  }
+});
+
+app.get('/burgers/:slug/edit', async (req, res) => {
+  try {
+    const burger = await Burger.findOne({ slug: req.params.slug });
+    if (!burger) throw new Error('Burger not found');
+    res.render('burgers/edit', { burger });
+  } catch (error) {
+    console.error(error);
+    res.status(404).send('Burger not found.');
+  }
+});
+
+app.post('/burgers/:slug', async (req, res) => {
+  try {
+    const burger = await Burger.findOneAndUpdate(
+      { slug: req.params.slug },
+      req.body,
       { new: true }
-    )
-    
-    response.redirect(`/cookies/${cookie.slug}`)
-  }catch (error) {
-    console.error(error)
-    response.send('Error: The cookie could not be created this time.')
+    );
+    res.redirect(`/burgers/${burger.slug}`);
+  } catch (error) {
+    console.error(error);
+    res.send('Error updating burger.');
   }
-})
+});
 
-app.get('/cookies/:slug/delete', async (request, response) => {
+app.get('/burgers/:slug/delete', async (req, res) => {
   try {
-    await Cookies.findOneAndDelete({ slug: request.params.slug})
-
-    response.redirect('/cookies')
-  }catch (error) {
-    console.error(error)
-    response.send('Error: No cookies was deleted. ')
+    await Burger.findOneAndDelete({ slug: req.params.slug });
+    res.redirect('/burgers');
+  } catch (error) {
+    console.error(error);
+    res.send('Error deleting burger.');
   }
-})
+});
 
-
-
+// ── START ─────────────────────────────────────────────
 app.listen(PORT, () => {
-  console.log(`👋 Started server on port ${PORT}`);
+  console.log(`👋 Started StackLab server on port ${PORT}`);
 });

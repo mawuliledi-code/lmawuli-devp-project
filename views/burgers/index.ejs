@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../includes/head', {title: 'Home | StackLab'}) %>
+
+<link rel="stylesheet" href="/styles/index.css">
+
+<body>
+
+  <main>
+
+    <!-- NAV -->
+    <nav>
+      <a href="/">
+        <img 
+          src="/images/stacklab-logo.png" 
+          alt="StackLab Logo"
+          style="width:100px; height:80px; object-fit:contain; border-radius:50%;" 
+        />
+      </a>
+      <a href="/" class="nav-active">SHOP</a>
+      <a href="/burgers/new">CRATE YOUR BURGER</a>
+      <a href="/discover">DISCOVER</a>
+      <a href="/contact">CONTACT</a>
+    </nav>
+
+    
+
+    <!-- HERO -->
+    <section class="hero">
+      <h2>Welcome to StackLab 🍔</h2>
+      <p>Stack it your way. Fresh ingredients, bold flavors, endless combos.</p>
+      <a href="/burgers" class="btn">Explore Burgers →</a>
+    </section>
+
+    <!-- DYNAMIC BURGER LIST -->
+    <div class="section-wrapper">
+      <h3 class="section-title">Our Burgers</h3>
+      <ul class="burger-list">
+        <% burgers.forEach(burger => { %>
+          <li class="burger-item">
+            <span class="burger-name">
+              <%= burger.name %> 🍔
+              <span class="burger-price"><%= readablePrice(burger.priceInCents) %></span>
+            </span>
+            <div class="burger-actions">
+              <a href="/burgers/<%= burger.slug %>">View</a>
+              <a href="/burgers/<%= burger.slug %>/edit">Edit</a>
+              <a href="/burgers/<%= burger.slug %>/delete" class="delete">Delete</a>
+            </div>
+          </li>
+        <% }) %>
+      </ul>
+    </div>
+
+    <!-- FEATURED BURGERS -->
+    <div class="section-wrapper">
+      <h3 class="section-title">Featured Stacks</h3>
+      <div class="cards-grid">
+
+        <div class="card">
+          <h3>Classic Stack 🍔</h3>
+          <p>Juicy beef patty, cheese, lettuce, tomato, and house sauce.</p>
+          <span class="price">$4.99</span>
+          <a href="/burgers" class="btn">Order Now</a>
+        </div>
+
+        <div class="card">
+          <h3>BBQ Bacon Stack 🥓</h3>
+          <p>Smoky BBQ sauce, crispy bacon, cheddar cheese.</p>
+          <span class="price">$5.50</span>
+          <a href="/burgers" class="btn">Order Now</a>
+        </div>
+
+        <div class="card">
+          <h3>Veggie Stack 🌱</h3>
+          <p>Grilled veggie patty, avocado, fresh greens.</p>
+          <span class="price">$3.99</span>
+          <a href="/burgers" class="btn">Order Now</a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- FEATURES -->
+    <div class="features-grid">
+      <div class="feature-card">
+        <h3> Fresh Ingredients</h3>
+        <p>Only the best quality meats and veggies.</p>
+      </div>
+      <div class="feature-card">
+        <h3>🍔 Build Your Own</h3>
+        <p>Create your perfect burger stack.</p>
+      </div>
+      <div class="feature-card">
+        <h3> Fast Delivery</h3>
+        <p>Hot and fresh, straight to your door.</p>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <p>Made with Love ❤️ by <strong>StackLab</strong> &copy; <%= new Date().getFullYear() %></p>
+  </footer>
+
+</body>
+</html>

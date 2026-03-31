@@ -1,38 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include('../includes/head', {title: 'CraveLab'}) %>
+<%- include('../includes/head', { title: 'StackLab 🍔' }) %>
 
 <body>
-  <header>
-    <h1>CraveLab</h1>
 
-    <nav>
-      <a href="/">SHOP</a>&nbsp;|&nbsp;
-      <a href="/blog">BLOG</a>&nbsp;|&nbsp;
-      <a href="/discover">DISCOVER</a>&nbsp;|&nbsp;
-      <a href="/contact">Contact</a>
-    </nav>
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-inner container">
+      <div class="logo">StackLab 🍔</div>
+      <nav class="main-nav">
+        <a href="/" class="nav-active">SHOP</a>
+        <a href="/burgers/new">BUILD BURGER</a>
+        <a href="/discover">DISCOVER</a>
+        <a href="/contact">CONTACT</a>
+      </nav>
+    </div>
   </header>
 
-  <main>
-    <p>Our current offering:</p>
-    
-    <ul>
-        <% cookies.forEach(cookie => { %>
-            <l1><%= cookies %></l1>
-        <% }) %>
-    </ul>   
-        <li>Chocolate Chip</li>
-    <li>Banana</li>
-      <li><a href="/craving/chocolate-chip">Chocolate Chip</a></li>
-      <li><a href="/craving/cherry">Cherry</a></li>
-    
+  <!-- HERO -->
+  <section class="hero">
+    <h2>Welcome to StackLab 🍔</h2>
+    <p>Stack it your way. Fresh ingredients, bold flavors, endless combos.</p>
+    <a href="/burgers/new" class="btn">Build Your Burger →</a>
+  </section>
+
+  <!-- BURGER LIST -->
+  <main class="container" style="margin: 50px auto;">
+    <h2 class="section-title">Our Current Stacks</h2>
+
+    <div class="burger-container">
+      <% burgers.forEach(burger => { %>
+        <div class="burger-card">
+          <div class="burger-card-emoji">🍔</div>
+          <h3><%= burger.name %></h3>
+          <p class="burger-card-price"><%= readablePrice(burger.priceInCents) %></p>
+          <div class="card-actions">
+            <a href="/burgers/<%= burger.slug %>">View</a>
+            <a href="/burgers/<%= burger.slug %>/edit">Edit</a>
+            <a href="/burgers/<%= burger.slug %>/delete" class="delete">Delete</a>
+          </div>
+        </div>
+      <% }) %>
+    </div>
   </main>
 
-  <footer>
-    Made with sweet🍪 by Craving
+  <!-- FOOTER -->
+  <footer class="site-footer">
+  <p>Made with Love ❤️ by <strong>StackLab</strong> &copy; <%= new Date().getFullYear() %></p>
   </footer>
+
 </body>
 </html>
-
-

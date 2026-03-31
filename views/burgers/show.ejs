@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('../includes/head', { title: 'StackLab 🍔' }) %>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+    <nav>
+      <img 
+          src="/images/stacklab-logo.png" 
+          alt="StackLab Logo"
+          style="width:100px; height:80px; object-fit:contain; border-radius:50%;" 
+        />
+      <a href="/">SHOP</a>
+      <a href="/burgers/new">BUILD BURGER</a>
+      <a href="/discover">DISCOVER</a>
+      <a href="/contact">CONTACT</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <main>
+    <section class="hero">
+      <h2>Welcome to StackLab 🍔</h2>
+      <p>Where bold flavors meet your creativity. Build, stack, and enjoy.</p>
+      <p>We currently have <strong>22 burger stacks</strong> ready to go 🔥</p>
+      <a href="/burgers" class="btn">Explore Burgers</a>
+      <a href="/burgers/new" class="btn">Build Your Own</a>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="features">
+      <div class="feature-card">
+        <h3>🔥 Fresh Ingredients</h3>
+        <p>Premium meats, fresh veggies, and bold sauces.</p>
+      </div>
+      <div class="feature-card">
+        <h3>🍔 Build Your Own</h3>
+        <p>Create your perfect burger stack your way.</p>
+      </div>
+      <div class="feature-card">
+        <h3>⚡ Fast Service</h3>
+        <p>Hot, fresh, and delivered quickly.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+<p>Made with Love ❤️ by <strong>StackLab</strong> &copy; <%= new Date().getFullYear() %></p>
+  </footer>
+
+</body>
+</html>

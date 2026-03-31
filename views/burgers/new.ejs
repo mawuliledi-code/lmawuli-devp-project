@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../includes/head', { title: 'New Burger | StackLab' }) %>
+
+<body>
+
+      <h1 class="logo">
+        
+        <a href="/">StackLab </a>
+      </h1>
+      <nav class="main-nav">
+        <a href="/" class="active">SHOP</a>
+        <a href="/blog">BLOG</a>
+        <a href="/discover">DISCOVER</a>
+        <a href="/contact">CONTACT</a>
+
+      <img 
+        src="/images/stacklab-logo.png" 
+        alt="StackLab Logo"
+        style="width:100px; height:80px; object-fit:contain; margin-left:auto;"
+      />
+      </nav>
+    </div>
+  </header>
+
+ 
+  <section class="hero-banner">
+    <h2>Create a New StackLab Burger 🍔</h2>
+    <p>Design your favorite burger and add it to the StackLab menu.</p>
+  </section>
+
+
+  <main class="container main-content">
+    <div class="form-wrapper">
+
+
+      <aside class="form-left">
+        <span class="form-emoji">🍔🥩 🍔🧀</span>
+        <h3>Design Your Burger</h3>
+        <p>Fill in and bring your creation to life!</p>
+        <ul class="form-tips">
+          <li>Create a standout burger name</li>
+          <li>Make it irresistibly tasty!</li>
+          <li>Build a burger that is delicious!</li>
+        </ul>
+      </aside>
+
+      <div class="form-right">
+        <h2>New Burger Details</h2>
+        <p class="form-desc">Create your personalized menu your way..</p>
+
+        <form action="/burgers" method="POST">
+
+          <div class="input-group">
+            <label for="name">Created Burger Name</label>
+            <input 
+              type="text" 
+              id="name" 
+              name="name" 
+              placeholder="e.g. Double Cheese Supreme" 
+              required />
+          </div>
+
+          <div class="input-group">
+            <label for="design">Description</label>
+            <input 
+              type="text" 
+              id="design" 
+              name="design" 
+              placeholder="e.g. Juicy beef burger with cheese and fresh veggies" 
+              required />
+          </div>
+
+          <div class="input-group">
+            <label for="slug">Slug</label>
+            <input 
+              type="text" 
+              id="slug" 
+              name="slug" 
+              placeholder="double-cheese-deluxe" 
+              required />
+          </div>
+
+          <div class="input-group">
+            <label for="priceInCents">Price in Cents</label>
+            <input 
+              type="number" 
+              id="priceInCents" 
+              name="priceInCents" 
+              placeholder="500" 
+              required />
+          </div>
+
+          <div class="input-group">
+            <label for="date">Date</label>
+            <input 
+              type="date" 
+              id="date" 
+              name="date" 
+              required />
+          </div>
+
+          <div class="form-actions">
+            <button type="submit">Make It Now! 🍔</button>
+            <a href="/burgers" class="back-link">← Return to Burgers</a>
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>Made with Love ❤️ by <strong>StackLab</strong> &copy; <%= new Date().getFullYear() %></p>
+  </footer>
+
+</body>
+</html>
