@@ -1,4 +1,4 @@
-/* ===== RESET & BASE ===== */
+
 * {
   margin: 0;
   padding: 0;
@@ -14,7 +14,7 @@ body {
   flex-direction: column;
 }
 
-/* ===== NAV ===== */
+
 nav {
   display: flex;
   align-items: center;
@@ -57,7 +57,7 @@ nav a.nav-active {
   border-radius: 5px;
 }
 
-/* ===== HERO BANNER ===== */
+
 .hero-banner {
   width: 100%;
   text-align: center;
@@ -78,7 +78,7 @@ nav a.nav-active {
   color: #aaa;
 }
 
-/* ===== MAIN CONTAINER ===== */
+
 .container {
   width: 100%;
   max-width: 1000px;
@@ -87,7 +87,7 @@ nav a.nav-active {
   flex: 1;
 }
 
-/* ===== FORM WRAPPER ===== */
+
 .form-wrapper {
   display: flex;
   gap: 32px;
@@ -99,7 +99,7 @@ nav a.nav-active {
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
 }
 
-/* ===== FORM LEFT ===== */
+
 .form-left {
   flex: 0 0 220px;
   text-align: center;
@@ -150,7 +150,7 @@ nav a.nav-active {
   font-weight: bold;
 }
 
-/* ===== FORM RIGHT ===== */
+
 .form-right {
   flex: 1;
 }
@@ -168,7 +168,7 @@ nav a.nav-active {
   margin-bottom: 28px;
 }
 
-/* ===== INPUT GROUPS ===== */
+
 .input-group {
   margin-bottom: 18px;
   display: flex;
@@ -205,7 +205,7 @@ nav a.nav-active {
   color: #bbb;
 }
 
-/* ===== FORM ACTIONS ===== */
+
 .form-actions {
   display: flex;
   align-items: center;
@@ -243,7 +243,7 @@ nav a.nav-active {
   color: #e05c1a;
 }
 
-/* ===== FOOTER ===== */
+
 .site-footer {
   padding: 20px;
   background-color: #fff;
@@ -261,7 +261,7 @@ nav a.nav-active {
   margin-left: 4px;
 }
 
-/* ===== RESPONSIVE ===== */
+
 @media (max-width: 768px) {
   nav {
     flex-wrap: wrap;
