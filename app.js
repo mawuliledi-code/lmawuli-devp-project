@@ -145,6 +145,9 @@ app.get('/burgers/:slug/delete', async (req, res) => {
 });
 
 
-app.listen(process.env.PORT, () => {
-  console.log(`👋 Started StackLab server on port ${process.env.PORT}`);
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+  console.log(`👋 Started StackLab server on port ${PORT}`);
 });
+
