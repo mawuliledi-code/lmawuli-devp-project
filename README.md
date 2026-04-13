@@ -4,18 +4,22 @@
 
 
 // About the project 
-This is about self created Stacklab burger where you can create or make your own style or taste of burger that you like add things topping to it how ever you want it and it will be done for you.
+StackLab is a burger menu web app where you can create your own burger of your taste, view them, edit them, and delete them.  
+
+GitHub Repo: https://github.com/mawuliledi-code/lmawuli-devp-project
+
 
 // The Tech Stack
 node.js 
 express
+MongoDB + Mongoose
 
 //How do I set up locally 
 I use mongodb to run it locally with localhost pport 3000
 
 // How it is tested 
-run npm node app.js
-
+ npm run dev
+It runs locally 
 
 // How i deplyoed it 
-I used mongo Atlas to do the deployment
+The application is deployed on Render, and the database is hosted on MongoDB Atlas
