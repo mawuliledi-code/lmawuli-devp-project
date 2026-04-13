@@ -1,13 +1,15 @@
 
+require('dotenv').config()
+
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');  
 
 const app = express();
-const PORT = 3000;
 
 
-mongoose.connect('mongodb://127.0.0.1:27017/StackLab')
+
+mongoose.connect(process.env.MONGODB_URI)
   .then(() => console.log('💽 Database connected'))
   .catch(error => console.error(error));
 
@@ -142,6 +144,6 @@ app.get('/burgers/:slug/delete', async (req, res) => {
 });
 
 
-app.listen(PORT, () => {
-  console.log(`👋 Started StackLab server on port ${PORT}`);
+app.listen(process.env.PORT, () => {
+  console.log(`👋 Started StackLab server on port ${process.env.PORT}`);
 });
