@@ -82,20 +82,21 @@ app.get('/burgers/new', (req, res) => {
 app.post('/burgers', async (req, res) => {
   try {
     const newBurger = new Burger({
-      name:         req.body.name,
-      slug:         req.body.slug,
-      patty:        req.body.patty,
-      toppings:     req.body.toppings || [],
-      sauce:        req.body.sauce,
-      priceInCents: req.body.priceInCents
+      name: req.body.name,
+      slug: req.body.slug,
+      design: req.body.design,                 
+      priceInCents: Number(req.body.priceInCents), 
+      createdAt: req.body.date ? new Date(req.body.date) : undefined 
     });
+
     await newBurger.save();
     res.redirect('/burgers');
   } catch (error) {
     console.error(error);
-    res.send('Error: Burger could not be created.');
+    res.status(400).send('Error: Burger could not be created.');
   }
 });
+
 
 app.get('/burgers/:slug', async (req, res) => {
   try {
