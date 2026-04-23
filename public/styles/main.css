@@ -299,7 +299,7 @@ nav a.nav-active {
   }
 
   nav a {
-    font-size: 0.75rem;
+    font-size: 0.68rem; 
     letter-spacing: 0.5px;
   }
 
@@ -312,11 +312,11 @@ nav a.nav-active {
   }
 
   .hero-banner h2 {
-    font-size: 1.5rem;
+    font-size: 1.3rem; 
   }
 
   .hero-banner p {
-    font-size: 0.88rem;
+    font-size: 0.8rem; 
   }
 
   .container {
@@ -337,19 +337,42 @@ nav a.nav-active {
     padding: 18px 14px;
   }
 
+  .form-left h3 {
+    font-size: 0.85rem; 
+  }
+
+  .form-left p {
+    font-size: 0.72rem; 
+  }
+
+  .form-tips li {
+    font-size: 0.7rem; 
+  }
+
   .form-right h2 {
-    font-size: 1.35rem;
+    font-size: 1.15rem; 
   }
 
   .form-desc {
-    font-size: 0.82rem;
+    font-size: 0.75rem; 
     margin-bottom: 20px;
+  }
+
+  .input-group label {
+    font-size: 0.75rem; 
   }
 
   .input-group input,
   .input-group select {
     padding: 10px 12px;
-    font-size: max(16px, 0.88rem); 
+    font-size: max(16px, 0.88rem);
+  }
+
+  .form-actions button {
+    width: 100%;
+    padding: 13px;
+    font-size: 0.82rem; 
+    text-align: center;
   }
 
   .form-actions {
@@ -358,13 +381,12 @@ nav a.nav-active {
     gap: 12px;
   }
 
-  .form-actions button {
-    width: 100%;
-    padding: 13px;
+  .back-link {
+    font-size: 0.78rem; 
     text-align: center;
   }
 
-  .back-link {
-    text-align: center;
+  .site-footer {
+    font-size: 0.72rem; 
   }
 }
