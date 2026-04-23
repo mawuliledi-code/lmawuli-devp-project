@@ -19,11 +19,11 @@ I use mongodb to run it locally with localhost pport 3000
 
 
 // How it is tested 
- npm run dev
+npm run dev
 It runs locally 
 Then open your browser at 
 http://localhost:3000
- and test all features — creating, viewing, editing and deleting burgers.
+and test all features — creating, viewing, editing and deleting burgers.
 
 // How i deplyoed it 
 The application is deployed on Render,
