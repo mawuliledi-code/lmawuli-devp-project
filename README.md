@@ -17,9 +17,15 @@ MongoDB + Mongoose
 //How do I set up locally 
 I use mongodb to run it locally with localhost pport 3000
 
+
 // How it is tested 
  npm run dev
 It runs locally 
+Then open your browser at 
+http://localhost:3000
+ and test all features — creating, viewing, editing and deleting burgers.
 
 // How i deplyoed it 
-The application is deployed on Render, and the database is hosted on MongoDB Atlas
+The application is deployed on Render,
+The database is hosted on MongoDB Atlas
+
