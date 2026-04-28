@@ -68,7 +68,6 @@ nav a.nav-active {
 .hero-banner h2 {
   font-size: 2.6rem;
   font-weight: 800;
-  color: #fff;
   margin-bottom: 12px;
 }
 
@@ -285,13 +284,13 @@ nav a.nav-active {
   }
 }
 
+
 @media (max-width: 480px) {
   nav {
-    flex-wrap: wrap;
+    flex-direction: column;
     height: auto;
     padding: 10px 14px;
     gap: 8px;
-    flex-direction: column;
   }
 
   nav img {
@@ -300,7 +299,7 @@ nav a.nav-active {
   }
 
   nav a {
-    font-size: 0.68rem; 
+    font-size: 0.68rem;
     letter-spacing: 0.5px;
   }
 
@@ -313,11 +312,11 @@ nav a.nav-active {
   }
 
   .hero-banner h2 {
-    font-size: 1.3rem; 
+    font-size: 1.3rem;
   }
 
   .hero-banner p {
-    font-size: 0.8rem; 
+    font-size: 0.8rem;
   }
 
   .container {
@@ -326,41 +325,37 @@ nav a.nav-active {
   }
 
   .form-wrapper {
-    flex-direction: column;
     padding: 18px;
     gap: 20px;
   }
 
   .form-left {
-    flex: unset;
-    width: 100%;
-    position: static;
     padding: 18px 14px;
   }
 
   .form-left h3 {
-    font-size: 0.85rem; 
+    font-size: 0.85rem;
   }
 
   .form-left p {
-    font-size: 0.72rem; 
+    font-size: 0.72rem;
   }
 
   .form-tips li {
-    font-size: 0.7rem; 
+    font-size: 0.7rem;
   }
 
   .form-right h2 {
-    font-size: 1.15rem; 
+    font-size: 1.15rem;
   }
 
   .form-desc {
-    font-size: 0.75rem; 
+    font-size: 0.75rem;
     margin-bottom: 20px;
   }
 
   .input-group label {
-    font-size: 0.75rem; 
+    font-size: 0.75rem;
   }
 
   .input-group input,
@@ -369,25 +364,25 @@ nav a.nav-active {
     font-size: max(16px, 0.88rem);
   }
 
-  .form-actions button {
-    width: 100%;
-    padding: 13px;
-    font-size: 0.82rem; 
-    text-align: center;
-  }
-
   .form-actions {
     flex-direction: column;
     align-items: stretch;
     gap: 12px;
   }
 
+  .form-actions button {
+    width: 100%;
+    padding: 13px;
+    font-size: 0.82rem;
+    text-align: center;
+  }
+
   .back-link {
-    font-size: 0.78rem; 
+    font-size: 0.78rem;
     text-align: center;
   }
 
   .site-footer {
-    font-size: 0.72rem; 
+    font-size: 0.72rem;
   }
 }
