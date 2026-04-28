@@ -1,0 +1,183 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  padding: 16px 40px;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+  gap: 24px;
+}
+
+.main-nav a {
+  text-decoration: none;
+  font-weight: 700;
+  color: #1a1a1a;
+  font-size: 0.95rem;
+}
+
+.main-nav a:hover {
+  color: #e8401c;
+}
+
+.hero-banner {
+  background-color: #1a1a1a;
+  color: #fff;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.hero-banner h1 {
+  font-size: 2.4rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.hero-banner p {
+  color: #aaa;
+  font-size: 1.1rem;
+}
+
+.main-content {
+  background-color: #f5f5f5;
+  min-height: 70vh;
+  display: flex;
+  justify-content: center;
+  padding: 50px 20px;
+}
+
+
+.show-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 40px 50px;
+  max-width: 680px;
+  width: 100%;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  height: fit-content;
+}
+
+.card-title {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #1a1a1a;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 3px solid #e8401c;
+}
+
+
+.show-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 0;
+  border-bottom: 1px solid #f0f0f0;
+  gap: 20px;
+}
+
+.show-label {
+  font-weight: 700;
+  color: #777;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  min-width: 140px;
+}
+
+.show-value {
+  font-size: 1rem;
+  color: #1a1a1a;
+  font-weight: 500;
+  text-align: right;
+}
+
+.price-tag {
+  color: #e8401c;
+  font-weight: 800;
+  font-size: 1.4rem;
+}
+
+.slug-tag {
+  font-family: monospace;
+  background: #f4f4f4;
+  padding: 4px 12px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.date-tag {
+  color: #555;
+}
+
+
+.show-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.btn {
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-back {
+  background: transparent;
+  border: 2px solid #1a1a1a;
+  color: #1a1a1a;
+}
+
+.btn-back:hover {
+  background: #1a1a1a;
+  color: #fff;
+}
+
+.btn-edit {
+  background: #e8401c;
+  color: #fff;
+  border: 2px solid #e8401c;
+}
+
+.btn-edit:hover {
+  background: #c93510;
+  border-color: #c93510;
+}
+
+.btn-delete {
+  background: transparent;
+  border: 2px solid #ddd;
+  color: #aaa;
+}
+
+.btn-delete:hover {
+  border-color: #e8401c;
+  color: #e8401c;
+}
+
+
+.site-footer {
+  text-align: center;
+  padding: 24px;
+  background: #1a1a1a;
+  color: #aaa;
+  font-size: 0.9rem;
+}
+
+.site-footer strong {
+  color: #e8401c;
+}
