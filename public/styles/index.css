@@ -1,4 +1,3 @@
-
 * {
   margin: 0;
   padding: 0;
@@ -11,16 +10,6 @@ body {
   color: #111;
 }
 
-
-nav {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 30px;
-  padding: 20px 40px;
-  border-bottom: 1px solid #eee;
-  background: #fff;
-}
 
 nav {
   display: flex;
@@ -173,7 +162,7 @@ nav a.nav-active:hover {
 }
 
 .card:hover {
-  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
 }
 
 .card h3 {
