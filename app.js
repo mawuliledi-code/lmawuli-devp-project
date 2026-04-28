@@ -169,17 +169,17 @@ app.get("/burgers/:slug/edit", async (req, res) => {
 
 app.post("/burgers/:slug", async (req, res) => {
   try {
-
     const updates = { ...req.body };
 
     if (typeof updates.priceInCents !== "undefined") {
       updates.priceInCents = Number(updates.priceInCents);
     }
 
+  
     const burger = await Burger.findOneAndUpdate(
       { slug: req.params.slug.toLowerCase() },
       updates,
-      { new: true, runValidators: true }
+      { returnDocument: "after", runValidators: true } 
     );
 
     if (!burger) throw new Error("Burger not found");
