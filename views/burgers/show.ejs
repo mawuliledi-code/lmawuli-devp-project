@@ -7,43 +7,40 @@
 
 <body>
 
-
   <nav class="main-nav">
-    <a href="/">SHOP</a>
-    <a href="/burgers/new">BUILD BURGER</a>
-    <a href="/contact">CONTACT</a>
     <img
       src="/images/stacklab-logo.png"
       alt="StackLab Logo"
-      style="width:100px; height:80px; object-fit:contain; margin-left:auto;"
+      style="width:100px; height:80px; object-fit:contain;"
     />
+    <a href="/">SHOP</a>
+    <a href="/burgers/new">CREATE YOUR BURGER</a>
+    <a href="/contact">CONTACT</a>
   </nav>
-
 
   <section class="hero-banner">
     <h1><%= burger.name %> 🍔</h1>
     <p>Here's your StackLab burger details.</p>
   </section>
 
-  
   <main class="main-content">
     <div class="show-card">
 
       <h2 class="card-title">🍔 Burger Details</h2>
 
-      
+ 
       <div class="show-row">
         <span class="show-label">🍔 Name</span>
         <span class="show-value"><%= burger.name %></span>
       </div>
 
-      
+     
       <div class="show-row">
         <span class="show-label">📋 Description</span>
         <span class="show-value"><%= burger.design || 'No description.' %></span>
       </div>
 
-     
+    
       <div class="show-row">
         <span class="show-label">🔗 Slug</span>
         <span class="show-value">
@@ -51,6 +48,7 @@
         </span>
       </div>
 
+    
       <div class="show-row">
         <span class="show-label">💰 Price</span>
         <span class="show-value price-tag">
@@ -60,9 +58,9 @@
 
      
       <div class="show-row">
-        <span class="show-label"> Date</span>
+        <span class="show-label">📅 Date</span>
         <span class="show-value date-tag">
-          <%= new Date(burger.date).toLocaleDateString('en-US', {
+          <%= new Date(burger.createdAt).toLocaleDateString('en-US', {
             year: 'numeric',
             month: 'long',
             day: 'numeric'
@@ -70,7 +68,7 @@
         </span>
       </div>
 
-      
+     
       <div class="show-actions">
         <a href="/" class="btn btn-back">← Back to Home</a>
         <a href="/burgers/<%= burger.slug %>/edit" class="btn btn-edit">✏️ Edit</a>
@@ -80,7 +78,6 @@
     </div>
   </main>
 
- 
   <footer class="site-footer">
     <p>Made with Love ❤️ by <strong>StackLab</strong> &copy; <%= new Date().getFullYear() %></p>
   </footer>
