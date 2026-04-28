@@ -1,55 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <%- include('../includes/head', { title: 'StackLab 🍔' }) %>
+  <%- include('../includes/head', { title: burger.name + ' | StackLab' }) %>
+  <link rel="stylesheet" href="/styles/show.css">
 </head>
 
 <body>
 
 
-    <nav>
-      <img 
-          src="/images/stacklab-logo.png" 
-          alt="StackLab Logo"
-          style="width:100px; height:80px; object-fit:contain; border-radius:50%;" 
-        />
-      <a href="/">SHOP</a>
-      <a href="/burgers/new">BUILD BURGER</a>
-      <a href="/contact">CONTACT</a>
-    </nav>
-  </header>
+  <nav class="main-nav">
+    <a href="/">SHOP</a>
+    <a href="/burgers/new">BUILD BURGER</a>
+    <a href="/contact">CONTACT</a>
+    <img
+      src="/images/stacklab-logo.png"
+      alt="StackLab Logo"
+      style="width:100px; height:80px; object-fit:contain; margin-left:auto;"
+    />
+  </nav>
+
+
+  <section class="hero-banner">
+    <h1><%= burger.name %> 🍔</h1>
+    <p>Here's your StackLab burger details.</p>
+  </section>
 
   
-  <main>
-    <section class="hero">
-      <h2>Welcome to StackLab 🍔</h2>
-      <p>Where bold flavors meet your creativity. Build, stack, and enjoy.</p>
-      <p>We currently have <strong>22 burger stacks</strong> ready to go 🔥</p>
-      <a href="/burgers" class="btn">Explore Burgers</a>
-      <a href="/burgers/new" class="btn">Build Your Own</a>
-    </section>
+  <main class="main-content">
+    <div class="show-card">
 
-  
-    <section class="features">
-      <div class="feature-card">
-        <h3>🔥 Fresh Ingredients</h3>
-        <p>Premium meats, fresh veggies, and bold sauces.</p>
-      </div>
-      <div class="feature-card">
-        <h3>🍔 Build Your Own</h3>
-        <p>Create your perfect burger stack your way.</p>
-      </div>
-      <div class="feature-card">
-        <h3>⚡ Fast Service</h3>
-        <p>Hot, fresh, and delivered quickly.</p>
-      </div>
-    </section>
+      <h2 class="card-title">🍔 Burger Details</h2>
 
+      
+      <div class="show-row">
+        <span class="show-label">🍔 Name</span>
+        <span class="show-value"><%= burger.name %></span>
+      </div>
+
+      
+      <div class="show-row">
+        <span class="show-label">📋 Description</span>
+        <span class="show-value"><%= burger.design || 'No description.' %></span>
+      </div>
+
+     
+      <div class="show-row">
+        <span class="show-label">🔗 Slug</span>
+        <span class="show-value">
+          <span class="slug-tag"><%= burger.slug %></span>
+        </span>
+      </div>
+
+      <div class="show-row">
+        <span class="show-label">💰 Price</span>
+        <span class="show-value price-tag">
+          $<%= (burger.priceInCents / 100).toFixed(2) %>
+        </span>
+      </div>
+
+     
+      <div class="show-row">
+        <span class="show-label"> Date</span>
+        <span class="show-value date-tag">
+          <%= new Date(burger.date).toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+          }) %>
+        </span>
+      </div>
+
+      
+      <div class="show-actions">
+        <a href="/" class="btn btn-back">← Back to Home</a>
+        <a href="/burgers/<%= burger.slug %>/edit" class="btn btn-edit">✏️ Edit</a>
+        <a href="/burgers/<%= burger.slug %>/delete" class="btn btn-delete">🗑️ Delete</a>
+      </div>
+
+    </div>
   </main>
 
-  
+ 
   <footer class="site-footer">
-<p>Made with Love ❤️ by <strong>StackLab</strong> &copy; <%= new Date().getFullYear() %></p>
+    <p>Made with Love ❤️ by <strong>StackLab</strong> &copy; <%= new Date().getFullYear() %></p>
   </footer>
 
 </body>
