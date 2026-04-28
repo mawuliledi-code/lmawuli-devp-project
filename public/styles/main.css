@@ -291,6 +291,7 @@ nav a.nav-active {
     height: auto;
     padding: 10px 14px;
     gap: 8px;
+    flex-direction: column;
   }
 
   nav img {
