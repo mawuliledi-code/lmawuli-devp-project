@@ -4,7 +4,9 @@
 
 <body>
   <nav>
-    <img src="/images/stacklab-logo.png" alt="StackLab Logo" />
+    <a href="/">
+      <img src="/images/stacklab-logo.png" alt="StackLab Logo" />
+    </a>
     <a href="/">SHOP</a>
     <a href="/burgers/new">CREATE YOUR BURGER</a>
     <a href="/contact" class="nav-active">CONTACT</a>
@@ -15,10 +17,10 @@
     <p>Come visit, call, or message us — we are always happy to hear from you!</p>
   </section>
 
-  <main class="section-wrapper" style="margin-top: 50px; margin-bottom: 60px;">
+  <main class="contact-section">
     <div class="contact-grid">
 
-      <div>
+      <section class="contact-details">
         <h2 class="section-title">Our Details</h2>
 
         <div class="contact-card">
@@ -56,37 +58,61 @@
             <p>Sat -- Sun: 10am -- 9pm</p>
           </div>
         </div>
-      </div>
+      </section>
 
-      <div class="contact-form-box">
+      <section class="contact-form-box">
         <h2 class="section-title">Send a Message</h2>
 
         <form action="/contact" method="POST">
           <div class="input-group">
             <label for="name">Your Name</label>
-            <input type="text" id="name" name="name" placeholder="e.g. Holified" required />
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="e.g. Holified"
+              required
+            />
           </div>
 
           <div class="input-group">
             <label for="email">Email Address</label>
-            <input type="email" id="email" name="email" placeholder="e.g. stacklab@gmail.com" required />
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="e.g. stacklab@gmail.com"
+              required
+            />
           </div>
 
           <div class="input-group">
             <label for="subject">Subject</label>
-            <input type="text" id="subject" name="subject" placeholder="e.g. Burger Order Inquiry" required />
+            <input
+              type="text"
+              id="subject"
+              name="subject"
+              placeholder="e.g. Burger Order Inquiry"
+              required
+            />
           </div>
 
           <div class="input-group">
             <label for="message">Message</label>
-            <textarea id="message" name="message" rows="5" placeholder="Write your message here..." required></textarea>
+            <textarea
+              id="message"
+              name="message"
+              rows="6"
+              placeholder="Write your message here..."
+              required
+            ></textarea>
           </div>
 
           <div class="form-actions">
             <button type="submit">Send Message 📬</button>
           </div>
         </form>
-      </div>
+      </section>
 
     </div>
   </main>
