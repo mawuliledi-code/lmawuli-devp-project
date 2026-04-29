@@ -53,11 +53,13 @@ const Burger = mongoose.model("Burger", burgerSchema);
 
 const readablePrice = (price) => `$${(price / 100).toFixed(2)}`;
 
-// ✅ HOME — main page
+
+
 app.get("/", async (req, res) => {
   try {
     const burgers = await Burger.find({}).exec();
     res.render("cravings/index", {
+      title: "StackLab 🍔",
       nameOfThePage: "StackLab 🍔",
       numberOfBurgers: burgers.length,
       numberSold: 3283,
@@ -67,6 +69,7 @@ app.get("/", async (req, res) => {
   } catch (error) {
     console.error(error);
     res.render("cravings/index", {
+      title: "StackLab 🍔",
       nameOfThePage: "StackLab 🍔",
       numberOfBurgers: 0,
       numberSold: 3283,
@@ -77,19 +80,29 @@ app.get("/", async (req, res) => {
 });
 
 
+
 app.get("/burgers", (req, res) => {
   res.redirect("/");
 });
 
 
+
 app.get("/contact", (req, res) => {
-  res.render("contact");
+  res.render("contact", { title: "Contact | StackLab" });
 });
+
+app.post("/contact", (req, res) => {
+  const { name, email, subject, message } = req.body;
+  console.log("Contact form submitted:", { name, email, subject, message });
+  res.redirect("/contact");
+});
+
 
 
 app.get("/burgers/new", (req, res) => {
-  res.render("burgers/new");
+  res.render("burgers/new", { title: "New Burger | StackLab" });
 });
+
 
 
 app.post("/burgers", async (req, res) => {
@@ -122,7 +135,7 @@ app.post("/burgers", async (req, res) => {
     });
 
     await newBurger.save();
-    res.redirect("/"); 
+    res.redirect("/");
   } catch (error) {
     console.error("Create burger error:", error);
 
@@ -137,28 +150,38 @@ app.post("/burgers", async (req, res) => {
 });
 
 
+
 app.get("/burgers/:slug", async (req, res) => {
   try {
     const burger = await Burger.findOne({ slug: req.params.slug.toLowerCase() });
     if (!burger) throw new Error("Burger not found");
-    res.render("burgers/show", { burger, readablePrice });
+    res.render("burgers/show", { 
+      title: `${burger.name} | StackLab`,
+      burger, 
+      readablePrice 
+    });
   } catch (error) {
     console.error(error);
     res.status(404).send("Burger not found.");
   }
 });
+
 
 
 app.get("/burgers/:slug/edit", async (req, res) => {
   try {
     const burger = await Burger.findOne({ slug: req.params.slug.toLowerCase() });
     if (!burger) throw new Error("Burger not found");
-    res.render("burgers/edit", { burger });
+    res.render("burgers/edit", { 
+      title: "Edit Burger | StackLab",
+      burger 
+    });
   } catch (error) {
     console.error(error);
     res.status(404).send("Burger not found.");
   }
 });
+
 
 
 app.post("/burgers/:slug", async (req, res) => {
@@ -184,15 +207,18 @@ app.post("/burgers/:slug", async (req, res) => {
 });
 
 
+
 app.get("/burgers/:slug/delete", async (req, res) => {
   try {
     await Burger.findOneAndDelete({ slug: req.params.slug.toLowerCase() });
-    res.redirect("/"); 
+    res.redirect("/");
   } catch (error) {
     console.error(error);
     res.status(400).send("Error deleting burger.");
   }
 });
+
+
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
